@@ -20,7 +20,7 @@ import org.junit.Ignore
 import spock.lang.Stepwise
 
 @Stepwise
-@Ignore
+//@Ignore
 class SampleProjectSpec extends ContractVerifierIntegrationSpec {
 
 	def setup() {

@@ -77,7 +77,7 @@ configure([project(':fraudDetectionService'), project(':loanApplicationService')
 		testFramework = 'Spock'
 		testMode = 'MockMvc'
 		baseClassForTests = 'org.springframework.cloud.MvcSpec'
-		contractsDslDir = file("${project.projectDir.absolutePath}/mappings/")
+		contractsDslDir = "${project.projectDir.absolutePath}/mappings/"
 		generatedTestSourcesDir = file("${project.buildDir}/generated-test-sources/")
 		stubsOutputDir = stubsOutputDirRoot
 	}
