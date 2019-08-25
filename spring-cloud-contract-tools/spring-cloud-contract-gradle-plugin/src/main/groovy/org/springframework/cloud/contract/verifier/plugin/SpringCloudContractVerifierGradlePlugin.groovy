@@ -55,7 +55,6 @@ class SpringCloudContractVerifierGradlePlugin implements Plugin<Project> {
 		this.project = project
 		project.plugins.apply(GroovyPlugin)
 		ContractVerifierExtension extension = project.extensions.create(EXTENSION_NAME, ContractVerifierExtension)
-		setConfigurationDefaults(extension)
 
 		TaskProvider<InitContractsTask> initContracts = createAndConfigureContractsInitTask(extension)
 		TaskProvider<ContractsCopyTask> copyContracts = createAndConfigureCopyContractsTask(initContracts, extension)
@@ -101,16 +100,6 @@ class SpringCloudContractVerifierGradlePlugin implements Plugin<Project> {
 			}
 		}
 	}
-
-	private void setConfigurationDefaults(ContractVerifierExtension extension) {
-		extension.with {
-			it.contractsDslDir.convention(project.layout.projectDirectory.dir("src/test/resources/contracts"))
-			it.generatedTestSourcesDir.convention(project.layout.getBuildDirectory().dir("generated-test-sources/contracts"))
-			it.generatedTestResourcesDir.convention(project.layout.getBuildDirectory().dir("generated-test-resources/contracts"))
-			it.stubsOutputDir.convention(project.layout.getBuildDirectory().dir("stubs"))
-		}
-	}
-
 
 	private void createGenerateTestsTask(ContractVerifierExtension extension,
 										 TaskProvider<ContractsCopyTask> copyContracts, TaskProvider<InitContractsTask> initContracts) {
