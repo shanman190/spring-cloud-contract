@@ -24,17 +24,17 @@ import static org.gradle.testkit.runner.TaskOutcome.UP_TO_DATE
 
 @Stepwise
 //@Ignore
-class SampleProjectSpec extends ContractVerifierIntegrationSpec {
+class SampleProjectKotlinSpec extends ContractVerifierKotlinIntegrationSpec {
 
 	def setup() {
-		setupForProject("functionalTest/sampleProject")
+		setupForProject("functionalTest/sampleProjectKotlin")
 		runTasksSuccessfully('clean')
 		//delete accidental output when previously importing SimpleBoot into Idea to tweak it
 	}
 
 	def "should pass basic flow for Spock"() {
 		given:
-			assert fileExists('build.gradle')
+			assert fileExists('build.gradle.kts')
 		when:
 			String[] args = ["check", "publishToMavenLocal", "--debug"] as String[]
 			if (WORK_OFFLINE) {
@@ -53,7 +53,7 @@ class SampleProjectSpec extends ContractVerifierIntegrationSpec {
 	def "should pass basic flow for JUnit"() {
 		given:
 			switchToJunitTestFramework()
-			assert fileExists('build.gradle')
+			assert fileExists('build.gradle.kts')
 		when:
 			runTasksSuccessfully(checkAndPublishToMavenLocal())
 		then:

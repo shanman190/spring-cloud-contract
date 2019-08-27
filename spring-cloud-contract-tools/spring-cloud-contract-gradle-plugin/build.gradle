@@ -38,10 +38,11 @@ ext {
 
 project.version = findProperty('verifierVersion')
 apply plugin: 'groovy'
+apply plugin: "maven-publish"
 apply from: "$rootDir/gradle/release.gradle"
 apply plugin: 'eclipse'
 //apply plugin: "jacoco"
-apply plugin: 'checkstyle'
+//apply plugin: 'checkstyle'
 
 group = 'org.springframework.cloud'
 
@@ -88,7 +89,7 @@ dependencies {
 	}
 	testCompile 'info.solidsoft.spock:spock-global-unroll:0.5.0'
 	testCompile gradleTestKit()
-	checkstyle "org.springframework.cloud:spring-cloud-build:${springCloudBuildVersion}"
+//	checkstyle "org.springframework.cloud:spring-cloud-build:${springCloudBuildVersion}"
 
 }
 
