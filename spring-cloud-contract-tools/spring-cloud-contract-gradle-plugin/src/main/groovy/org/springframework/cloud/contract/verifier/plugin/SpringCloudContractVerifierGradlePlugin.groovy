@@ -22,8 +22,6 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.Task
 import org.gradle.api.plugins.GroovyPlugin
-import org.gradle.api.publish.maven.MavenPublication
-import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
 import org.gradle.api.tasks.TaskProvider
 import org.gradle.api.tasks.bundling.Jar
 
@@ -163,45 +161,7 @@ class SpringCloudContractVerifierGradlePlugin implements Plugin<Project> {
 		task.configure {
 			it.dependsOn copyContracts
 		}
-		createAndConfigureMavenPublishPlugin(task, extension)
 		return task
-	}
-
-	@Deprecated
-	private void createAndConfigureMavenPublishPlugin(TaskProvider<Task> stubsTask, ContractVerifierExtension extension) {
-		if (!classIsOnClasspath("org.gradle.api.publish.maven.plugins.MavenPublishPlugin")) {
-			project.logger.debug("Maven Publish Plugin is not present - won't add default publication")
-			return
-		}
-		// This must be called within afterEvaluate due to getting data from extension, which must be initialised first:
-		project.afterEvaluate {
-			project.logger.debug("Spring Cloud Contract Verifier Plugin: Generating default publication")
-			if (extension.disableStubPublication.get()) {
-				project.logger.info("You've switched off the stub publication - won't add default publication")
-				return
-			}
-			project.plugins.withType(MavenPublishPlugin) { def publishingPlugin ->
-				def publishingExtension = project.extensions.findByName('publishing')
-				if (hasStubsPublication(publishingExtension)) {
-					project.logger.info("Spring Cloud Contract Verifier Plugin: Stubs publication was present - won't create a new one. Remember about passing stubs as artifact")
-				}
-				else {
-					project.logger.debug("Spring Cloud Contract Verifier Plugin: Stubs publication is not present - will create one")
-					setPublications(publishingExtension, stubsTask)
-				}
-			}
-		}
-	}
-
-	@CompileDynamic
-	@Deprecated
-	private void setPublications(def publishingExtension, TaskProvider<Task> stubsTask) {
-		publishingExtension.publications {
-			stubs(MavenPublication) {
-				artifactId "${project.name}"
-				artifact stubsTask.get() // TODO: How to make it lazily initialised?
-			}
-		}
 	}
 
 	private TaskProvider<Task> stubsTask() {
@@ -210,17 +170,6 @@ class SpringCloudContractVerifierGradlePlugin implements Plugin<Project> {
 		}
 		catch (Exception e) {
 			return null
-		}
-	}
-
-	@CompileDynamic
-	@Deprecated
-	private boolean hasStubsPublication(def publishingExtension) {
-		try {
-			return publishingExtension.publications.getByName('stubs')
-		}
-		catch (Exception e) {
-			return false
 		}
 	}
 
@@ -238,9 +187,6 @@ class SpringCloudContractVerifierGradlePlugin implements Plugin<Project> {
 
 			it.dependsOn generateClientStubs
 		}
-		project.artifacts {
-			archives task
-		}
 		return task
 	}
 
@@ -252,18 +198,6 @@ class SpringCloudContractVerifierGradlePlugin implements Plugin<Project> {
 			it.config = ContractsCopyTask.fromExtension(extension, buildRootPath(), project)
 		}
 		return task
-	}
-
-	@Deprecated
-	private boolean classIsOnClasspath(String className) {
-		try {
-			Class.forName(className)
-			return true
-		}
-		catch (Exception e) {
-			project.logger.debug("Maven Publish Plugin is not available")
-		}
-		return false
 	}
 
 	private String buildRootPath() {

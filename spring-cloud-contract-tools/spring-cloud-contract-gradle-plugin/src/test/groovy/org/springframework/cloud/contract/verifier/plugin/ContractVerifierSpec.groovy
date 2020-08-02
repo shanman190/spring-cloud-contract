@@ -16,12 +16,8 @@
 
 package org.springframework.cloud.contract.verifier.plugin
 
-
 import org.gradle.api.internal.project.DefaultProject
 import org.gradle.api.plugins.GroovyPlugin
-import org.gradle.api.publish.PublicationContainer
-import org.gradle.api.publish.PublishingExtension
-import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
 import org.gradle.testfixtures.ProjectBuilder
 import spock.lang.Specification
 
@@ -84,31 +80,6 @@ class ContractVerifierSpec extends Specification {
 	def "should configure copyContracts task as a dependency of the verifierStubsJar task"() {
 		expect:
 			project.tasks.verifierStubsJar.getDependsOn().contains(project.tasks.named("copyContracts"))
-	}
-
-	/**
-	 * project.evaluate() is used here in order to trigger the evaluation lifecycle of a project.
-	 * This method is currently exposed via the internal API and is subject to change, however, Gradle
-	 * does not yet expose a way to test this portion of the lifecycle.
-	 *
-	 * In the next version, this test will be completely removed as publication will be fully a user
-	 * responsibility.
-	 */
-	@Deprecated
-	def "should configure maven-publish plugin, if enabled"() {
-		given:
-			project.plugins.apply(MavenPublishPlugin)
-			project.plugins.apply(SpringCloudContractVerifierGradlePlugin)
-			ContractVerifierExtension extension = project.getExtensions().findByType(ContractVerifierExtension)
-			extension.with {
-				disableStubPublication = false
-			}
-			project.evaluate() // Currently internal method to trigger afterEvaluate blocks.
-
-		expect:
-			PublicationContainer publications = project.extensions.getByType(PublishingExtension).publications
-			publications.size() > 0
-			publications.named("stubs") != null
 	}
 
 	def "should compile"() {
