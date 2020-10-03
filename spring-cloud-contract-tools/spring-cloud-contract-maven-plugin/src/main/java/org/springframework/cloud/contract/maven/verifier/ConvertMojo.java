@@ -64,7 +64,7 @@ public class ConvertMojo extends AbstractMojo {
 	 * GroovyDSL.
 	 */
 	@Parameter(property = "spring.cloud.contract.verifier.contractsDirectory",
-			defaultValue = "${project.basedir}/src/test/resources/contracts")
+			defaultValue = "${project.basedir}/src/contractTest/resources/contracts")
 	private File contractsDirectory;
 
 	/**
@@ -218,6 +218,11 @@ public class ConvertMojo extends AbstractMojo {
 		// download contracts, unzip them and pass as output directory
 		ContractVerifierConfigProperties config = new ContractVerifierConfigProperties();
 		config.setExcludeBuildFolders(this.excludeBuildFolders);
+		if (!this.contractsDirectory.exists()) {
+			getLog().warn("Falling back to legacy contracts directory in 'test' source set. Please switch to "
+					+ "'contractTest' source set as this will be removed in a future release");
+			this.contractsDirectory = new File(project.getBasedir(), "src/test/resources/contracts");
+		}
 		File contractsDirectory = locationOfContracts(config);
 		contractsDirectory = contractSubfolderIfPresent(contractsDirectory);
 

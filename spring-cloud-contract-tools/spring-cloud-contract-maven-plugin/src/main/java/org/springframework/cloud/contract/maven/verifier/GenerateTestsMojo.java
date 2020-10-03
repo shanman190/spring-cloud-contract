@@ -56,7 +56,7 @@ public class GenerateTestsMojo extends AbstractMojo {
 	private RepositorySystemSession repoSession;
 
 	@Parameter(property = "spring.cloud.contract.verifier.contractsDirectory",
-			defaultValue = "${project.basedir}/src/test/resources/contracts")
+			defaultValue = "${project.basedir}/src/contractTest/resources/contracts")
 	private File contractsDirectory;
 
 	@Parameter(defaultValue = "${project.build.directory}/generated-test-sources/contracts")
@@ -276,6 +276,11 @@ public class GenerateTestsMojo extends AbstractMojo {
 		getLog().info("Generating server tests source code for Spring Cloud Contract Verifier contract verification");
 		final ContractVerifierConfigProperties config = new ContractVerifierConfigProperties();
 		config.setFailOnInProgress(this.failOnInProgress);
+		if (!this.contractsDirectory.exists()) {
+			getLog().warn("Falling back to legacy contracts directory in 'test' source set. Please switch to "
+					+ "'contractTest' source set as this will be removed in a future release");
+			this.contractsDirectory = new File(project.getBasedir(), "src/test/resources/contracts");
+		}
 		// download contracts, unzip them and pass as output directory
 		File contractsDirectory = new MavenContractsDownloader(this.project, this.contractDependency,
 				this.contractsPath, this.contractsRepositoryUrl, this.contractsMode, getLog(),
