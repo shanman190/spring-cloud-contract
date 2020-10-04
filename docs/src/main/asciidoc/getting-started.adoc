@@ -1250,7 +1250,7 @@ start the server side `FraudDetectionController`. The following listing shows th
 ====
 [source,java,indent=0]
 ----
-include::{introduction_url}/samples/standalone/dsl/http-server/src/test/java/com/example/fraud/FraudBase.java[]
+include::{introduction_url}/samples/standalone/dsl/http-server/src/contractTest/java/com/example/fraud/FraudBase.java[]
 ----
 ====
 

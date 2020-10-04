@@ -1452,13 +1452,13 @@ Next, you need to make some changes to your base class. The following examples u
 [source,java,indent=0,subs="verbatim,attributes",role="primary"]
 .WebAppContext
 ----
-include::{standalone_restdocs_path}/http-server/src/test/java/com/example/fraud/FraudBaseWithWebAppSetup.java[tags=base_class,indent=0]
+include::{standalone_restdocs_path}/http-server/src/contractTest/java/com/example/fraud/FraudBaseWithWebAppSetup.java[tags=base_class,indent=0]
 ----
 
 [source,java,indent=0,subs="verbatim,attributes",role="secondary"]
 .Standalone
 ----
-include::{standalone_restdocs_path}/http-server/src/test/java/com/example/fraud/FraudBaseWithStandaloneSetup.java[tags=base_class,indent=0]
+include::{standalone_restdocs_path}/http-server/src/contractTest/java/com/example/fraud/FraudBaseWithStandaloneSetup.java[tags=base_class,indent=0]
 ----
 ====
 
