@@ -42,6 +42,18 @@ public class PluginUnitTest extends AbstractMojoTest {
 						.replace("/", File.separator));
 	}
 
+	@Test
+	public void shouldGenerateWireMockStubsInLegacyLocation() throws Exception {
+		File basedir = getBasedir("basic-legacy-location");
+		executeMojo(basedir, "convert");
+		assertFilesPresent(basedir,
+				"target/stubs/META-INF/org.springframework.cloud.verifier.sample/sample-project/0.1/mappings/Sample.json"
+						.replace("/", File.separator));
+		assertFilesNotPresent(basedir,
+				"target/stubs/META-INF/org.springframework.cloud.verifier.sample/sample-project/0.1/mappings/Messaging.json"
+						.replace("/", File.separator));
+	}
+
 	private Xpp3Dom defaultPackageForTests() {
 		return newParameter("basePackageForTests", "org.springframework.cloud.contract.verifier.tests");
 	}
