@@ -103,7 +103,7 @@ contracts {
 
 To get started with writing contracts in Kotlin, you need to start with a (newly created) Kotlin Script file (`.kts`).
 As with the Java DSL, you can put your contracts in any directory of your choice.
-By default, the Maven and Gradle plugins look at the `src/test/resources/contracts` directory.
+By default, the Maven and Gradle plugins look at the `src/contractTest/resources/contracts` directory.
 
 You need to explicitly pass the `spring-cloud-contract-spec-kotlin` dependency to your project plugin setup.
 The following example (in both Maven and Gradle) shows how to do so:

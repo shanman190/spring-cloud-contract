@@ -837,7 +837,7 @@ include::{stubrunner_core_path}/src/test/groovy/org/springframework/cloud/contra
 ====
 
 Then only the stubs registered under a path that contains `bar-consumer` in its name (that is, those from the
-`src/test/resources/contracts/bar-consumer/some/contracts/...` folder) are allowed to be referenced.
+`src/contractTest/resources/contracts/bar-consumer/some/contracts/...` folder) are allowed to be referenced.
 
 You can also set the consumer name explicitly, as follows:
 
@@ -851,7 +851,7 @@ include::{stubrunner_core_path}/src/test/groovy/org/springframework/cloud/contra
 ====
 
 Then only the stubs registered under a path that contains the `foo-consumer` in its name (that is, those from the
-`src/test/resources/contracts/foo-consumer/some/contracts/...` folder) are allowed to be referenced.
+`src/contractTest/resources/contracts/foo-consumer/some/contracts/...` folder) are allowed to be referenced.
 
 For more information about the reasons behind this change,
 see https://github.com/spring-cloud/spring-cloud-contract/issues/224[issue 224].

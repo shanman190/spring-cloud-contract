@@ -785,7 +785,7 @@ include::{samples_url}/producer_with_empty_git/build.gradle[tags=plugin,indent=0
 
 With such a setup:
 
-* Contracts from the default `src/test/resources/contracts` directory are picked.
+* Contracts from the default `src/contractTest/resources/contracts` directory are picked.
 * Tests are generated from the contracts.
 * Stubs are created from the contracts.
 * Once the tests pass:
@@ -872,7 +872,7 @@ set a `metaData` entry in the Pact file with the `sentTo` key equal to the desti
 === Pact Contract
 
 Spring Cloud Contract can read the Pact JSON definition. You can place the file in the
-`src/test/resources/contracts` folder. Remember to put the `spring-cloud-contract-pact` dependency to your classpath. The following example shows such a Pact contract:
+`src/contractTest/resources/contracts` folder. Remember to put the `spring-cloud-contract-pact` dependency to your classpath. The following example shows such a Pact contract:
 
 ====
 [source,javascript,indent=0]
@@ -1318,7 +1318,7 @@ arguments:
 
 - argument 1 : `FQN`: Fully qualified name of the `ContractConverter` (for example, `PactContractConverter`). *REQUIRED*.
 - argument 2 : `path`: Path where the dumped files should be stored. *OPTIONAL* -- defaults to `target/converted-contracts`.
-- argument 3 : `path`: Path were the contracts should be searched for. *OPTIONAL* -- defaults to `src/test/resources/contracts`.
+- argument 3 : `path`: Path were the contracts should be searched for. *OPTIONAL* -- defaults to `src/contractTest/resources/contracts`.
 
 After calling the transformer, the Spring Cloud Contract files are processed and,
 depending on the provided FQN of the `ContractTransformer`, the contracts are transformed
@@ -1349,7 +1349,7 @@ The following example shows how to configure Pact integration for both Maven and
 					</argument>
 					<argument>${project.basedir}/target/pacts</argument>
 					<argument>
-						${project.basedir}/src/test/resources/contracts
+						${project.basedir}/src/contractTest/resources/contracts
 					</argument>
 				</arguments>
 			</configuration>
@@ -1368,7 +1368,7 @@ task convertContracts(type: JavaExec) {
     main = "org.springframework.cloud.contract.verifier.util.ToFileContractsTransformer"
     classpath = sourceSets.test.compileClasspath
     args("org.springframework.cloud.contract.verifier.spec.pact.PactContractConverter",
-            "${project.rootDir}/build/pacts", "${project.rootDir}/src/test/resources/contracts")
+            "${project.rootDir}/build/pacts", "${project.rootDir}/src/contractTest/resources/contracts")
 }
 
 test.dependsOn("convertContracts")

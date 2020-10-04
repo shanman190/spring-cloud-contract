@@ -147,7 +147,7 @@ include::{standalone_samples_path}/http-server/pom.xml[tags=repos,indent=0]
 == Adding stubs
 
 By default, Spring Cloud Contract Verifier looks for stubs in the
-`src/test/resources/contracts` directory. The directory containing stub definitions is
+`src/contractTestest/resources/contracts` directory. The directory containing stub definitions is
 treated as a class name, and each stub definition is treated as a single test. We assume
 that it contains at least one directory to be used as the test class name. If there is more
 than one level of nested directories, all except the last one is used as the package name.
@@ -156,8 +156,8 @@ Consider the following structure:
 ====
 [source,groovy,indent=0]
 ----
-src/test/resources/contracts/myservice/shouldCreateUser.groovy
-src/test/resources/contracts/myservice/shouldReturnUser.groovy
+src/contractTest/resources/contracts/myservice/shouldCreateUser.groovy
+src/contractTest/resources/contracts/myservice/shouldReturnUser.groovy
 ----
 ====
 
@@ -226,7 +226,7 @@ classes.
 * `baseClassForTests`: Creates a base class for all generated tests. By default, if you
 use Spock classes, the class is `spock.lang.Specification`.
 * `contractsDirectory`: Specifies a directory that contains contracts written with the
-Groovyn DSL. The default directory is `/src/test/resources/contracts`.
+Groovyn DSL. The default directory is `/src/contractTest/resources/contracts`.
 * `generatedTestSourcesDir`: Specifies the test source directory where tests generated
 from the Groovy DSL should be placed. By default, its value is
 `$buildDir/generated-test-sources/contracts`.

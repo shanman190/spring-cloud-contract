@@ -167,7 +167,7 @@ The following UML diagram shows the relationship of the parts within Spring Clou
 
 To start working with Spring Cloud Contract, you can add files with REST or messaging contracts
 expressed in either Groovy DSL or YAML to the contracts directory, which is set by the
-`contractsDslDir` property. By default, it is `$rootDir/src/test/resources/contracts`.
+`contractsDslDir` property. By default, it is `$rootDir/src/contractTest/resources/contracts`.
 
 Then you can add the Spring Cloud Contract Verifier dependency and plugin to your build file, as
 the following example shows:
@@ -364,7 +364,7 @@ image::start_spring_io_dependencies.png[width=800,alt=Spring Initializr with Web
 
 Now you can add files with `REST/` messaging contracts
 expressed in either Groovy DSL or YAML to the contracts directory, which is set by the
-`contractsDslDir` property. By default, it is `$rootDir/src/test/resources/contracts`.
+`contractsDslDir` property. By default, it is `$rootDir/src/contractTest/resources/contracts`.
 Note that the file name does not matter. You can organize your contracts within this
 directory with whatever naming scheme you like.
 
@@ -975,7 +975,7 @@ $ git clone https://your-git-server.com/server-side.git local-http-server-repo
 As a consumer, you need to define what exactly you want to achieve. You need to formulate
 your expectations. To do so, write the following contract:
 
-IMPORTANT: Place the contract in the `src/test/resources/contracts/fraud` folder. The `fraud` folder
+IMPORTANT: Place the contract in the `src/contractTest/resources/contracts/fraud` folder. The `fraud` folder
 is important because the producer's test base class name references that folder.
 
 The following example shows our contract, in both Groovy and YAML:
@@ -1238,7 +1238,7 @@ include::{introduction_url}/samples/standalone/dsl/http-server/pom.xml[tags=cont
 IMPORTANT: This example uses "`convention-based`" naming by setting the
 `packageWithBaseClasses` property. Doing so means that the two last packages combine to
 make the name of the base test class. In our case, the contracts were placed under
-`src/test/resources/contracts/fraud`. Since you do not have two packages starting from
+`src/contractTest/resources/contracts/fraud`. Since you do not have two packages starting from
 the `contracts` folder, pick only one, which should be `fraud`. Add the `Base` suffix and
 capitalize `fraud`. That gives you the `FraudBase` test class name.
 

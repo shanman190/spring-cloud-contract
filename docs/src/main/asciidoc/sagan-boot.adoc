@@ -1,6 +1,6 @@
 == On the Producer Side
 
-To start working with Spring Cloud Contract, you can add files with REST or messaging contracts expressed in either Groovy DSL or YAML to the contracts directory, which is set by the contractsDslDir property. By default, it is $rootDir/src/test/resources/contracts.
+To start working with Spring Cloud Contract, you can add files with REST or messaging contracts expressed in either Groovy DSL or YAML to the contracts directory, which is set by the contractsDslDir property. By default, it is $rootDir/src/contractTest/resources/contracts.
 
 Then you can add the Spring Cloud Contract Verifier dependency and plugin to your build file, as the following example shows:
 

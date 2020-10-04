@@ -305,7 +305,7 @@ $ ./mvnw clean install
 ----
 ====
 . Sets up the plugin to fetch the contract definitions from a JAR instead of from
-`src/test/resources/contracts`, as follows:
+`src/contractTest/resources/contracts`, as follows:
 +
 ====
 [source,xml,indent=0,subs="verbatim,attributes",role="primary"]
