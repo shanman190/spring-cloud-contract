@@ -877,7 +877,7 @@ Spring Cloud Contract can read the Pact JSON definition. You can place the file 
 ====
 [source,javascript,indent=0]
 ----
-include::{standalone_pact_path}/http-server/src/test/resources/contracts/pact/shouldMarkClientAsFraud.json[indent=0]
+include::{standalone_pact_path}/http-server/src/contractTest/resources/contracts/pact/shouldMarkClientAsFraud.json[indent=0]
 ----
 ====
 

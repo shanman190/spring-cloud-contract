@@ -120,13 +120,13 @@ be marked as a fraud in both Groovy and YAML:
 [source,groovy,indent=0,role="primary"]
 .groovy
 ----
-include::{introduction_url}/samples/standalone/dsl/http-server/src/test/resources/contracts/fraud/shouldMarkClientAsFraud.groovy[]
+include::{introduction_url}/samples/standalone/dsl/http-server/src/contractTest/resources/contracts/fraud/shouldMarkClientAsFraud.groovy[]
 ----
 
 [source,yaml,indent=0,role="secondary"]
 .yaml
 ----
-include::{introduction_url}/samples/standalone/dsl/http-server/src/test/resources/contracts/yml/fraud/shouldMarkClientAsFraud.yml[]
+include::{introduction_url}/samples/standalone/dsl/http-server/src/contractTest/resources/contracts/yml/fraud/shouldMarkClientAsFraud.yml[]
 ----
 ====
 
@@ -984,13 +984,13 @@ The following example shows our contract, in both Groovy and YAML:
 [source,groovy,indent=0,role="primary"]
 .groovy
 ----
-include::{introduction_url}/samples/standalone/dsl/http-server/src/test/resources/contracts/fraud/shouldMarkClientAsFraud.groovy[]
+include::{introduction_url}/samples/standalone/dsl/http-server/src/contractTest/resources/contracts/fraud/shouldMarkClientAsFraud.groovy[]
 ----
 
 [source,yaml,indent=0,role="secondary"]
 .yaml
 ----
-include::{introduction_url}/samples/standalone/dsl/http-server/src/test/resources/contracts/yml/fraud/shouldMarkClientAsFraud.yml[]
+include::{introduction_url}/samples/standalone/dsl/http-server/src/contractTest/resources/contracts/yml/fraud/shouldMarkClientAsFraud.yml[]
 ----
 ====
 

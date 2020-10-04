@@ -450,13 +450,13 @@ delays or integrate with third party WireMock extensions.
 [source,groovy,indent=0,role="primary"]
 .groovy
 ----
-include::{standalone_samples_path}/http-server/src/test/resources/contracts/fraud/shouldReturnFraudStats.groovy[tags=metadata,indent=0]
+include::{standalone_samples_path}/http-server/src/contractTest/resources/contracts/fraud/shouldReturnFraudStats.groovy[tags=metadata,indent=0]
 ----
 
 [source,yaml,indent=0,role="secondary"]
 .yml
 ----
-include::{standalone_samples_path}/http-server/src/test/resources/contracts/yml/fraud/shouldReturnFraudStats.yml[tags=metadata,indent=0]
+include::{standalone_samples_path}/http-server/src/contractTest/resources/contracts/yml/fraud/shouldReturnFraudStats.yml[tags=metadata,indent=0]
 ----
 
 [source,java,indent=0,subs="verbatim,attributes",role="secondary"]
@@ -1848,7 +1848,7 @@ following example:
 [source,groovy,indent=0,role="primary"]
 .Groovy
 ----
-include::{plugins_path}/spring-cloud-contract-maven-plugin/src/test/projects/multiple-contracts/src/test/resources/contracts/com/hello/v1/WithList.groovy[lines=18..-1,indent=0]
+include::{plugins_path}/spring-cloud-contract-maven-plugin/src/test/projects/multiple-contracts/src/contractTest/resources/contracts/com/hello/v1/WithList.groovy[lines=18..-1,indent=0]
 ----
 
 [source,yaml,indent=0,role="secondary"]

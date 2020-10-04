@@ -177,7 +177,7 @@ stub with part of your customization. Let's look at the following example
 
 [source,yaml,indent=0]
 ----
-include::{standalone_samples_path}/http-server/src/test/resources/contracts/yml/fraud/shouldReturnFraudStats.yml[tags=metadata,indent=0]
+include::{standalone_samples_path}/http-server/src/contractTest/resources/contracts/yml/fraud/shouldReturnFraudStats.yml[tags=metadata,indent=0]
 ----
 
 In the `metadata` section we've set an entry with key `wiremock` and its value is a JSON `StubMapping` that sets a delay in the generated stub. Such code allowed us to get the following merged WireMock JSON stub.
