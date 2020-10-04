@@ -296,6 +296,7 @@ public class GenerateTestsMojo extends AbstractMojo {
 		}
 
 		setupConfig(config, contractsDirectory);
+		this.project.addTestCompileSourceRoot(new File(this.project.getBasedir(), "src/contractTest/java").getAbsolutePath());
 		this.project.addTestCompileSourceRoot(this.generatedTestSourcesDir.getAbsolutePath());
 		Resource resource = new Resource();
 		resource.setDirectory(this.generatedTestResourcesDir.getAbsolutePath());
